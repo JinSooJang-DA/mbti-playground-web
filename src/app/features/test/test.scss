@@ -1,22 +1,142 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  color: #f1f1f1;
+
+  // 1. 순수 배경 이미지 레이어 (완전 고정)
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('/assets/sg-back.webp') center center / cover no-repeat;
+    z-index: -2;
+  }
+
+  // 2. 조명이 살아 움직이는 동적 오버레이 레이어
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(
+      circle at center,
+      rgba(13, 13, 17, 0.42) 0%,
+      rgba(13, 13, 17, 0.88) 100%
+    );
+    z-index: -1;
+    pointer-events: none;
+    // 확실히 체감되도록 깜빡임 효과 연결
+    animation: squidGameLighting 5s ease-in-out infinite alternate;
+  }
+}
+
+// 3. 서바이벌 홀 특유의 미세한 조명 긴장감 애니메이션
+@keyframes squidGameLighting {
+  0% {
+    opacity: 0.85;
+    filter: brightness(1);
+  }
+  35% {
+    opacity: 0.95;
+    filter: brightness(0.85); // 서서히 어두워짐
+  }
+  40% {
+    opacity: 0.7;
+    filter: brightness(1.15); // 살짝 깜빡(플리커)
+  }
+  45% {
+    opacity: 0.92;
+    filter: brightness(0.9);
+  }
+  75% {
+    opacity: 0.65;
+    filter: brightness(1.2);  // 조명이 밝아짐
+  }
+  100% {
+    opacity: 0.88;
+    filter: brightness(1);
+  }
+}
+
+// 컨텐츠 영역 (글자와 비디오가 배경 위에 오도록 설정)
 .test-container {
+  position: relative;
+  z-index: 1;
   max-width: 900px;
   margin: 0 auto;
-  padding: 24px 16px;
-  font-family: sans-serif;
+  padding: 36px 16px 52px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   text-align: center;
 }
 
+// 1. 메인 타이틀: 폰트 크기 확대 (1.75rem -> 2.25rem) 및 묵직한 텍스트 섀도우
 .test-header {
-  margin-bottom: 20px;
+  margin-bottom: 28px;
+
+  h2 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9), 0 0 20px rgba(214, 40, 75, 0.4);
+    margin: 0;
+  }
 }
 
+// 프로그레스 바
+.progress-wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 1.6rem auto;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #03dac5;
+    margin-bottom: 0.6rem;
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 8px;
+    background-color: #1a1a24;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.9);
+
+    .progress-fill {
+      height: 100%;
+      // 게이지 바도 차분한 크림슨 레드로 조화
+      background: linear-gradient(90deg, #037a76, #b01b3b);
+      border-radius: 4px;
+      box-shadow: 0 0 8px rgba(176, 27, 59, 0.5);
+      transition: width 0.4s ease-in-out;
+    }
+  }
+}
+
+// 유튜브 비디오 영역 및 선택지 버튼
 .video-section {
   position: relative;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.85), 0 0 1px 1px rgba(255, 255, 255, 0.08);
 
-  // 유튜브 플레이어 위를 투명하게 덮어 외부 이탈 클릭 차단
   .video-click-guard {
     position: absolute;
     top: 0;
@@ -28,143 +148,163 @@
     cursor: default;
   }
 
-  // 선택지 버튼들은 클릭 가드보다 더 위(z-index: 10)에 위치
   .choice-overlay {
     position: absolute;
-    bottom: 20px;
+    bottom: 24px;
     left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    padding: 0 1rem;
+    gap: 1.2rem;
+    padding: 0 1.2rem;
     box-sizing: border-box;
     z-index: 10;
+    animation: fadeIn 0.3s ease-out forwards;
 
+    // 2. 선택지 버튼: 채도를 대폭 낮춘 다크 크림슨(#9b1c31 ~ #b32543)
     .choice-btn {
       flex: 1;
       max-width: 360px;
-      padding: 0.9rem 1.2rem;
-      background-color: #e50914;
-      color: #ffffff;
-      border: 2px solid transparent;
-      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      background: linear-gradient(135deg, #871a2e, #a8243e);
+      color: #f5f5f5;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
       font-size: 1.05rem;
       font-weight: 700;
+      letter-spacing: 0.3px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-      transition: transform 0.15s ease, background-color 0.15s ease;
+      gap: 0.75rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7), 0 0 10px rgba(135, 26, 46, 0.25);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 
       &:hover {
-        background-color: #b80710;
         transform: translateY(-2px);
+        background: linear-gradient(135deg, #991e35, #ba2a46);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.8), 0 0 14px rgba(186, 42, 70, 0.4);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
 
       .btn-key {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 26px;
-        height: 26px;
-        background-color: rgba(255, 255, 255, 0.2);
+        width: 28px;
+        height: 28px;
+        background-color: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         border-radius: 50%;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+        font-weight: 800;
       }
     }
   }
 }
 
+// 결과 카드 영역
 .result-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
 .result-card {
   max-width: 800px;
   width: 100%;
-  padding: 24px;
-  border: 1px solid #333;
-  border-radius: 8px;
-  background-color: #1a1a1a;
-  color: #fff;
+  padding: 28px;
+  box-sizing: border-box;
+  border: 1px solid #2a2a38;
+  border-radius: 12px;
+  background-color: rgba(20, 20, 26, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  color: #f1f1f1;
   text-align: left;
 
+  h3 {
+    margin: 0 0 14px 0;
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #ffd700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+  }
+
   .description {
-    line-height: 1.6;
-    margin: 16px 0;
+    line-height: 1.7;
+    margin: 0 0 20px 0;
+    font-size: 1.05rem;
+    color: #dcdcdc;
   }
 
   .result-meta {
     display: flex;
-    gap: 24px;
-    font-weight: bold;
-    color: #e50914;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding-top: 14px;
+    border-top: 1px solid #242430;
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #d13d5b;
+
+      &:first-child {
+        color: #03dac5;
+      }
+    }
   }
 }
 
-.progress-wrapper {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto 1.5rem auto; // 좌우 auto로 완벽한 중앙 정렬
-  padding: 0 0.5rem;
-  box-sizing: border-box;
+.restart-btn {
+  margin-top: 1.8rem;
+  padding: 0.9rem 2rem;
+  background-color: #1e1e28;
+  color: #ffffff;
+  border: 1px solid #871a2e;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
 
-  .progress-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #cccccc;
-    margin-bottom: 0.5rem;
+  &:hover {
+    background: #871a2e;
+    border-color: #ba2a46;
+    box-shadow: 0 0 16px rgba(186, 42, 70, 0.4);
+    transform: translateY(-2px);
   }
 
-  .progress-track {
-    width: 100%;
-    height: 8px;
-    background-color: #2b2b2b;
-    border-radius: 4px;
-    overflow: hidden;
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #e50914, #ff5e62);
-      border-radius: 4px;
-      transition: width 0.4s ease-in-out;
-    }
+  &:active {
+    transform: translateY(0);
   }
+}
+
+.loading-text {
+  margin-top: 3rem;
+  font-size: 1.1rem;
+  color: #888899;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-.restart-btn {
-  margin-top: 1.5rem;
-  padding: 0.8rem 1.5rem;
-  background-color: #333333;
-  color: #ffffff;
-  border: 1px solid #555555;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background-color: #e50914;
-    border-color: #e50914;
   }
 }
