@@ -30,16 +30,24 @@ export class TestState {
     return test.nodes[nodeId] ?? null;
   });
 
-  // 5. 현재 진행 단계 (1단계 ~ 4단계)
+  // 5. 현재 진행 단계 (질문 1~4, 결과 5)
   readonly currentStage = computed<number>(() => {
     const node = this.currentNode();
-    if (node && node.type === 'question') {
+    if (node?.type === 'question') {
       return (node as QuestionNode).stage;
     }
-    return 4;
+    if (node?.type === 'result') {
+      return 5;
+    }
+    return 1;
   });
 
-  // 6. 결과 노드 도달 시 매칭되는 상세 결과 카드 정보
+  // 6. 진행 퍼센트 (20% 단위: 1->20%, 2->40%, 3->60%, 4->80%, 결과->100%)
+  readonly progressPercent = computed<number>(() => {
+    return this.currentStage() * 20;
+  });
+
+  // 7. 결과 노드 도달 시 매칭되는 상세 결과 카드 정보
   readonly currentResultDetail = computed<ResultDetail | null>(() => {
     const node = this.currentNode();
     const results = this.resultsMap();

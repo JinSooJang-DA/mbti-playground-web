@@ -71,7 +71,8 @@ export class YoutubePlayer implements OnInit, OnDestroy {
         autoplay: 1,
         controls: 1,
         rel: 0,
-        modestbranding: 1
+        modestbranding: 1,
+        fs: 0
       },
       events: {
         onStateChange: (event: any) => {
