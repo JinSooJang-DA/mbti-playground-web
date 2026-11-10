@@ -11,6 +11,7 @@
       "type": "question",
       "id": "Q1_LightsOut",
       "videoId": "3VNpwfhaDRg",
+      "choiceAtSec": 23,
       "options": [
         {
           "label": {

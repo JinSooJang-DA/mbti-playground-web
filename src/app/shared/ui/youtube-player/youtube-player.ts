@@ -19,9 +19,9 @@ declare const YT: any;
 })
 export class YoutubePlayer implements OnInit, OnDestroy {
   readonly videoId = input.required<string>();
-  readonly choiceAtSec = input<number | undefined>(undefined); // 1. 선택지 노출 초 입력받기
+  readonly choiceAtSec = input<number | undefined>(undefined);
   readonly videoEnded = output<void>();
-  readonly choiceTriggered = output<void>(); // 2. 선택 시점 도달 이벤트
+  readonly choiceTriggered = output<void>();
 
   private playerContainer = viewChild<ElementRef<HTMLDivElement>>('playerTarget');
   private player: any = null;
@@ -30,7 +30,7 @@ export class YoutubePlayer implements OnInit, OnDestroy {
 
   constructor() {
     afterNextRender(() => {
-      this.initPlayer();
+      this.ensureYTReadyAndInit();
     });
 
     effect(() => {
@@ -51,6 +51,15 @@ export class YoutubePlayer implements OnInit, OnDestroy {
     }
   }
 
+  private ensureYTReadyAndInit(): void {
+    if (typeof YT !== 'undefined' && YT.ready) {
+      YT.ready(() => this.initPlayer());
+    } else {
+      // 0.2초 뒤 재시도
+      setTimeout(() => this.ensureYTReadyAndInit(), 200);
+    }
+  }
+
   private initPlayer(): void {
     const container = this.playerContainer()?.nativeElement;
     if (!container || typeof YT === 'undefined' || !YT.Player) {
@@ -61,12 +70,16 @@ export class YoutubePlayer implements OnInit, OnDestroy {
       videoId: this.videoId(),
       playerVars: {
         autoplay: 1,
-        controls: 1,       // 개발 및 테스트 편의를 위해 컨트롤바 활성화
+        controls: 1,
         rel: 0,
         modestbranding: 1
       },
       events: {
+        onReady: () => {
+          console.log('✅ YouTube Player 준비 완료');
+        },
         onStateChange: (event: any) => {
+          console.log('▶️ 플레이어 상태 변경:', event.data);
           // 재생 중 (PLAYING: 1)
           if (event.data === 1) {
             this.startTimeTracker();
@@ -74,8 +87,9 @@ export class YoutubePlayer implements OnInit, OnDestroy {
             this.stopTimeTracker();
           }
 
-          // 영상 종료 (ENDED: 0)
+          // 종료 (ENDED: 0)
           if (event.data === 0) {
+            console.log('🏁 영상 종료 감지');
             this.videoEnded.emit();
           }
         }
@@ -92,6 +106,7 @@ export class YoutubePlayer implements OnInit, OnDestroy {
       const targetSec = this.choiceAtSec();
 
       if (targetSec !== undefined && currentSec >= targetSec && !this.hasTriggeredChoice) {
+        console.log(`🎯 선택 시점 도달 (${currentSec.toFixed(1)}초 >= ${targetSec}초)`);
         this.hasTriggeredChoice = true;
         this.choiceTriggered.emit();
       }

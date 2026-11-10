@@ -31,6 +31,7 @@ export class Test implements OnInit {
   }
 
   onVideoEnded(): void {
+    console.log('📢 Test 컴포넌트: onVideoEnded 호출됨! isChoiceVisible -> true');
     this.isChoiceVisible.set(true);
   }
 
