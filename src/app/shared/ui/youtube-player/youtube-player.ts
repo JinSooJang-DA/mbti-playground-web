@@ -4,18 +4,13 @@ import {
   OnDestroy,
   OnInit,
   afterNextRender,
+  effect,
   input,
   output,
   viewChild
 } from '@angular/core';
 
-// 전역 window.YT 객체 타입 힌트
-declare global {
-  interface Window {
-    YT: any;
-    onYouTubeIframeAPIReady: () => void;
-  }
-}
+declare const YT: any;
 
 @Component({
   selector: 'app-youtube-player',
@@ -23,24 +18,34 @@ declare global {
   styleUrl: './youtube-player.scss'
 })
 export class YoutubePlayer implements OnInit, OnDestroy {
-  // 1. 부모 컴포넌트와 통신하는 Input / Output
   readonly videoId = input.required<string>();
+  readonly choiceAtSec = input<number | undefined>(undefined); // 1. 선택지 노출 초 입력받기
   readonly videoEnded = output<void>();
+  readonly choiceTriggered = output<void>(); // 2. 선택 시점 도달 이벤트
 
-  // 2. HTML의 플레이어 컨테이너 요소 참조
   private playerContainer = viewChild<ElementRef<HTMLDivElement>>('playerTarget');
   private player: any = null;
+  private timeCheckInterval: any = null;
+  private hasTriggeredChoice = false;
 
   constructor() {
-    // 3. 브라우저 렌더링이 완료된 뒤 플레이어 초기화
     afterNextRender(() => {
       this.initPlayer();
+    });
+
+    effect(() => {
+      const nextId = this.videoId();
+      if (this.player?.loadVideoById) {
+        this.hasTriggeredChoice = false;
+        this.player.loadVideoById(nextId);
+      }
     });
   }
 
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
+    this.stopTimeTracker();
     if (this.player?.destroy) {
       this.player.destroy();
     }
@@ -48,26 +53,55 @@ export class YoutubePlayer implements OnInit, OnDestroy {
 
   private initPlayer(): void {
     const container = this.playerContainer()?.nativeElement;
-    if (!container || !window.YT || !window.YT.Player) {
+    if (!container || typeof YT === 'undefined' || !YT.Player) {
       return;
     }
 
-    this.player = new window.YT.Player(container, {
+    this.player = new YT.Player(container, {
       videoId: this.videoId(),
       playerVars: {
         autoplay: 1,
-        controls: 0,       // 몰입감을 위해 기본 컨트롤러 숨김
-        rel: 0,            // 추천 영상 제한
+        controls: 1,       // 개발 및 테스트 편의를 위해 컨트롤바 활성화
+        rel: 0,
         modestbranding: 1
       },
       events: {
         onStateChange: (event: any) => {
-          // YT.PlayerState.ENDED (값이 0일 때 = 영상 종료)
+          // 재생 중 (PLAYING: 1)
+          if (event.data === 1) {
+            this.startTimeTracker();
+          } else {
+            this.stopTimeTracker();
+          }
+
+          // 영상 종료 (ENDED: 0)
           if (event.data === 0) {
             this.videoEnded.emit();
           }
         }
       }
     });
+  }
+
+  private startTimeTracker(): void {
+    this.stopTimeTracker();
+    this.timeCheckInterval = setInterval(() => {
+      if (!this.player?.getCurrentTime) return;
+
+      const currentSec = this.player.getCurrentTime();
+      const targetSec = this.choiceAtSec();
+
+      if (targetSec !== undefined && currentSec >= targetSec && !this.hasTriggeredChoice) {
+        this.hasTriggeredChoice = true;
+        this.choiceTriggered.emit();
+      }
+    }, 500);
+  }
+
+  private stopTimeTracker(): void {
+    if (this.timeCheckInterval) {
+      clearInterval(this.timeCheckInterval);
+      this.timeCheckInterval = null;
+    }
   }
 }

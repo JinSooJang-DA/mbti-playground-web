@@ -10,8 +10,7 @@
     "Q1_LightsOut": {
       "type": "question",
       "id": "Q1_LightsOut",
-      "videoId": "dQw4w9WgXcQ",
-      "choiceAtSec": 45,
+      "videoId": "3VNpwfhaDRg",
       "options": [
         {
           "label": {
@@ -24,14 +23,140 @@
         },
         {
           "label": {
-            "ko": "캡슐 안에 숨는다",
-            "en": "Hide inside the capsule",
-            "de": "In der Kapsel verstecken"
+            "ko": "구석에 숨는다",
+            "en": "Hide in the corner",
+            "de": "In der Ecke verstecken"
           },
           "trait": "I",
           "nextId": "Q2_I_Dalgona"
         }
       ]
+    },
+    "Q2_E_Dalgona": {
+      "type": "question",
+      "id": "Q2_E_Dalgona",
+      "videoId": "jNQXAC9IVRw",
+      "options": [
+        {
+          "label": {
+            "ko": "도구를 즉시 개조한다",
+            "en": "Modify the needle immediately",
+            "de": "Die Nadel sofort anpassen"
+          },
+          "trait": "S",
+          "nextId": "R_ESTP"
+        },
+        {
+          "label": {
+            "ko": "기발한 꾀를 낸다",
+            "en": "Come up with an unusual trick",
+            "de": "Einen ungewöhnlichen Trick ausdenken"
+          },
+          "trait": "N",
+          "nextId": "R_ENFP"
+        }
+      ]
+    },
+    "Q2_I_Dalgona": {
+      "type": "question",
+      "id": "Q2_I_Dalgona",
+      "videoId": "9bZkp7q19f0",
+      "options": [
+        {
+          "label": {
+            "ko": "원칙대로 천천히 긁는다",
+            "en": "Scratch carefully by the book",
+            "de": "Vorsichtig nach Vorschrift kratzen"
+          },
+          "trait": "S",
+          "nextId": "R_ISTJ"
+        },
+        {
+          "label": {
+            "ko": "주변 사람의 패턴을 관찰한다",
+            "en": "Observe patterns around me",
+            "de": "Muster anderer beobachten"
+          },
+          "trait": "N",
+          "nextId": "R_INFJ"
+        }
+      ]
+    },
+    "R_ENFP": {
+      "type": "result",
+      "id": "R_ENFP",
+      "videoId": "kJQP7kiw5Fk",
+      "mbtiType": "ENFP",
+      "title": {
+        "ko": "예측불가 생존 전략가",
+        "en": "Unpredictable Strategist",
+        "de": "Unberechenbarer Stratege"
+      },
+      "description": {
+        "ko": "위기 속에서도 독창적인 탈출구를 찾아내는 타고난 분위기 메이커입니다.",
+        "en": "A natural mood maker who discovers creative exits even under crisis.",
+        "de": "Ein Stimmungsmacher, der selbst in der Krise kreative Auswege findet."
+      },
+      "survivalRate": 68.5,
+      "compatibleType": "INFJ",
+      "shortsVideoId": "abc12345"
+    },
+    "R_ESTP": {
+      "type": "result",
+      "id": "R_ESTP",
+      "videoId": "kJQP7kiw5Fk",
+      "mbtiType": "ESTP",
+      "title": {
+        "ko": "돌파력 100% 행동대장",
+        "en": "High-Action Breakthrough",
+        "de": "Aktionsgeladener Vorreiter"
+      },
+      "description": {
+        "ko": "생각보다 몸이 먼저 움직여 상황을 정면으로 돌파합니다.",
+        "en": "Reacts instantly and punches directly through challenges.",
+        "de": "Handelt blitzschnell und durchbricht Herausforderungen frontal."
+      },
+      "survivalRate": 74.0,
+      "compatibleType": "ISFJ",
+      "shortsVideoId": "abc12345"
+    },
+    "R_ISTJ": {
+      "type": "result",
+      "id": "R_ISTJ",
+      "videoId": "kJQP7kiw5Fk",
+      "mbtiType": "ISTJ",
+      "title": {
+        "ko": "냉철한 철벽 생존자",
+        "en": "Ironclad Cold Survivor",
+        "de": "Eiserner kühler Überlebender"
+      },
+      "description": {
+        "ko": "원칙과 규칙을 철저히 지키며 실수 없이 끝까지 살아남습니다.",
+        "en": "Follows rules strictly and survives till the end without mistakes.",
+        "de": "Befolgt Regeln strikt und überlebt fehlerfrei bis zum Schluss."
+      },
+      "survivalRate": 82.0,
+      "compatibleType": "ESFP",
+      "shortsVideoId": "abc12345"
+    },
+    "R_INFJ": {
+      "type": "result",
+      "id": "R_INFJ",
+      "videoId": "kJQP7kiw5Fk",
+      "mbtiType": "INFJ",
+      "title": {
+        "ko": "판을 읽는 막후 설계자",
+        "en": "Mastermind Behind the Scenes",
+        "de": "Drahtzieher im Hintergrund"
+      },
+      "description": {
+        "ko": "사람들의 심리를 꿰뚫어 보고 보이지 않는 곳에서 승패를 좌우합니다.",
+        "en": "Reads human psychology and influences outcomes from the shadows.",
+        "de": "Durchschaut die menschliche Psyche und entscheidet Spiele im Verborgenen."
+      },
+      "survivalRate": 71.5,
+      "compatibleType": "ENFP",
+      "shortsVideoId": "abc12345"
     }
   }
 }
