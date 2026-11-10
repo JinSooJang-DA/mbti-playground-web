@@ -1,1 +1,31 @@
-<p>test works!</p>
+<section style="padding: 24px; font-family: sans-serif;">
+  <h2>{{ state.currentTest()?.title?.ko }}</h2>
+
+  @if (state.currentNode(); as node) {
+    <!-- 질문 노드일 때 -->
+    @if (node.type === 'question') {
+      <div style="border: 1px solid #ccc; padding: 16px; margin-top: 16px;">
+        <p><strong>현재 영상 ID:</strong> {{ node.videoId }}</p>
+        <p><strong>노드 ID:</strong> {{ node.id }}</p>
+
+        <div style="display: flex; gap: 12px; margin-top: 16px;">
+          @for (option of node.options; track option.trait) {
+            <button (click)="onChoose(option)" style="padding: 10px 16px; cursor: pointer;">
+              {{ option.label.ko }} ({{ option.trait }})
+            </button>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- 결과 노드일 때 -->
+    @if (node.type === 'result') {
+      <div style="border: 1px solid #00c853; padding: 16px; margin-top: 16px;">
+        <h3>결과: {{ node.mbtiType }} - {{ node.title.ko }}</h3>
+        <p>{{ node.description.ko }}</p>
+      </div>
+    }
+  } @else {
+    <p>시나리오 데이터를 불러오는 중입니다...</p>
+  }
+</section>
