@@ -1,48 +1,42 @@
 <section class="test-container">
-  <header class="test-header">
-    <h2>{{ state.currentTest()?.title?.ko }}</h2>
-  </header>
+    <header class="test-header">
+        <h2>{{ state.currentTest()?.title?.[langService.currentLang()] }}</h2>
+    </header>
 
-  @if (state.currentNode(); as node) {
+    @if (state.currentNode(); as node) {
     <!-- 질문 노드일 때 -->
     @if (node.type === 'question') {
-      <div class="video-section">
-        <app-youtube-player
-          [videoId]="node.videoId"
-          (videoEnded)="onVideoEnded()"
-        />
+    <div class="video-section">
+        <app-youtube-player [videoId]="node.videoId" (videoEnded)="onVideoEnded()" />
 
         <!-- 영상이 끝났거나 선택 시점이 되었을 때 노출 -->
         @if (isChoiceVisible()) {
-          <div class="choice-overlay">
+        <div class="choice-overlay">
             @for (option of node.options; track option.trait) {
-              <button
-                class="choice-btn"
-                (click)="onChoose(option)"
-              >
-                {{ option.label.ko }}
-              </button>
+            <button class="choice-btn" (click)="onChoose(option)">
+                {{ option.label[langService.currentLang()] }}
+            </button>
             }
-          </div>
+        </div>
         }
-      </div>
+    </div>
     }
 
     <!-- 결과 노드일 때 -->
     @if (node.type === 'result') {
-      <div class="result-section">
+    <div class="result-section">
         <app-youtube-player [videoId]="node.videoId" />
         <div class="result-card">
-          <h3>{{ node.mbtiType }} - {{ node.title.ko }}</h3>
-          <p class="description">{{ node.description.ko }}</p>
-          <div class="result-meta">
-            <span>생존율: {{ node.survivalRate }}%</span>
-            <span>환상의 궁합: {{ node.compatibleType }}</span>
-          </div>
+            <h3>{{ node.mbtiType }} - {{ node.title[langService.currentLang()] }}</h3>
+            <p class="description">{{ node.description[langService.currentLang()] }}</p>
+            <div class="result-meta">
+                <span>생존율: {{ node.survivalRate }}%</span>
+                <span>환상의 궁합: {{ node.compatibleType }}</span>
+            </div>
         </div>
-      </div>
+    </div>
     }
-  } @else {
+    } @else {
     <p class="loading-text">시나리오 데이터를 불러오는 중입니다...</p>
-  }
+    }
 </section>

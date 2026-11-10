@@ -1,1 +1,14 @@
+<header style="display: flex; justify-content: flex-end; gap: 8px; padding: 12px 24px; background: #111;">
+  @for (lang of langService.availableLangs; track lang.code) {
+    <button
+      (click)="langService.setLanguage(lang.code)"
+      [style.font-weight]="langService.currentLang() === lang.code ? 'bold' : 'normal'"
+      [style.background]="langService.currentLang() === lang.code ? '#e50914' : '#333'"
+      style="color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;"
+    >
+      {{ lang.label }}
+    </button>
+  }
+</header>
+
 <router-outlet />

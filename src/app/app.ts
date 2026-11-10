@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { LanguageService } from './core/services/language';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('mbti-playground-web');
+  readonly langService = inject(LanguageService);
 }
