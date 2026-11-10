@@ -1,0 +1,37 @@
+{
+  "id": "squid-game-s1",
+  "title": {
+    "ko": "오징어게임 MBTI 시즌 1",
+    "en": "Squid Game MBTI Season 1",
+    "de": "Squid Game MBTI Staffel 1"
+  },
+  "startNodeId": "Q1_LightsOut",
+  "nodes": {
+    "Q1_LightsOut": {
+      "type": "question",
+      "id": "Q1_LightsOut",
+      "videoId": "dQw4w9WgXcQ",
+      "choiceAtSec": 45,
+      "options": [
+        {
+          "label": {
+            "ko": "무리에 합류한다",
+            "en": "Join the group",
+            "de": "Der Gruppe beitreten"
+          },
+          "trait": "E",
+          "nextId": "Q2_E_Dalgona"
+        },
+        {
+          "label": {
+            "ko": "캡슐 안에 숨는다",
+            "en": "Hide inside the capsule",
+            "de": "In der Kapsel verstecken"
+          },
+          "trait": "I",
+          "nextId": "Q2_I_Dalgona"
+        }
+      ]
+    }
+  }
+}
