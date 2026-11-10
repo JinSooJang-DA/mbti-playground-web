@@ -1,31 +1,48 @@
-<section style="padding: 24px; font-family: sans-serif;">
-  <h2>{{ state.currentTest()?.title?.ko }}</h2>
+<section class="test-container">
+  <header class="test-header">
+    <h2>{{ state.currentTest()?.title?.ko }}</h2>
+  </header>
 
   @if (state.currentNode(); as node) {
     <!-- 질문 노드일 때 -->
     @if (node.type === 'question') {
-      <div style="border: 1px solid #ccc; padding: 16px; margin-top: 16px;">
-        <p><strong>현재 영상 ID:</strong> {{ node.videoId }}</p>
-        <p><strong>노드 ID:</strong> {{ node.id }}</p>
+      <div class="video-section">
+        <app-youtube-player
+          [videoId]="node.videoId"
+          (videoEnded)="onVideoEnded()"
+        />
 
-        <div style="display: flex; gap: 12px; margin-top: 16px;">
-          @for (option of node.options; track option.trait) {
-            <button (click)="onChoose(option)" style="padding: 10px 16px; cursor: pointer;">
-              {{ option.label.ko }} ({{ option.trait }})
-            </button>
-          }
-        </div>
+        <!-- 영상이 끝났거나 선택 시점이 되었을 때 노출 -->
+        @if (isChoiceVisible()) {
+          <div class="choice-overlay">
+            @for (option of node.options; track option.trait) {
+              <button
+                class="choice-btn"
+                (click)="onChoose(option)"
+              >
+                {{ option.label.ko }}
+              </button>
+            }
+          </div>
+        }
       </div>
     }
 
     <!-- 결과 노드일 때 -->
     @if (node.type === 'result') {
-      <div style="border: 1px solid #00c853; padding: 16px; margin-top: 16px;">
-        <h3>결과: {{ node.mbtiType }} - {{ node.title.ko }}</h3>
-        <p>{{ node.description.ko }}</p>
+      <div class="result-section">
+        <app-youtube-player [videoId]="node.videoId" />
+        <div class="result-card">
+          <h3>{{ node.mbtiType }} - {{ node.title.ko }}</h3>
+          <p class="description">{{ node.description.ko }}</p>
+          <div class="result-meta">
+            <span>생존율: {{ node.survivalRate }}%</span>
+            <span>환상의 궁합: {{ node.compatibleType }}</span>
+          </div>
+        </div>
       </div>
     }
   } @else {
-    <p>시나리오 데이터를 불러오는 중입니다...</p>
+    <p class="loading-text">시나리오 데이터를 불러오는 중입니다...</p>
   }
 </section>
