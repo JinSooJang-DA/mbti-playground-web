@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home {}
+export class Home {
+  title = 'Squid Game MBTI'
+  subtitle = 'Find your survival personality type'
+  startTest(): void {
+  console.log('Start test clicked!');
+  }
+}
