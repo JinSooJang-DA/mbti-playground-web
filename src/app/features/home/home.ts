@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,10 @@ import { Component } from '@angular/core';
 export class Home {
   title = 'Squid Game MBTI'
   subtitle = 'Find your survival personality type'
+  private router = inject(Router);
+
   startTest(): void {
-  console.log('Start test clicked!');
+    this.router.navigate(['/test'])
   }
 }
+  
