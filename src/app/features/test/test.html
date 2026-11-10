@@ -4,12 +4,12 @@
   </header>
 
   @if (state.currentNode(); as node) {
-    <!-- 1. 질문 노드일 때: choiceAtSec 전달 -->
+    <!-- 1. 질문 노드일 때 -->
     @if (node.type === 'question') {
       <div class="video-section">
         <app-youtube-player
           [videoId]="node.videoId"
-          [choiceAtSec]="node.choiceAtSec"
+          [choiceWindowSec]="state.currentTest()?.choiceWindowSec ?? 15"
           (choiceTriggered)="onVideoEnded()"
           (videoEnded)="onVideoEnded()"
         />
@@ -29,19 +29,22 @@
       </div>
     }
 
-    <!-- 2. 결과 노드일 때: videoId만 전달 (선택지가 없으므로) -->
+    <!-- 2. 결과 노드일 때 -->
     @if (node.type === 'result') {
       <div class="result-section">
         <app-youtube-player [videoId]="node.videoId" />
 
-        <div class="result-card">
-          <h3>{{ node.mbtiType }} - {{ node.title[langService.currentLang()] }}</h3>
-          <p class="description">{{ node.description[langService.currentLang()] }}</p>
-          <div class="result-meta">
-            <span>생존율: {{ node.survivalRate }}%</span>
-            <span>환상의 궁합: {{ node.compatibleType }}</span>
+        @if (state.currentResultDetail(); as detail) {
+          <div class="result-card">
+            <h3>{{ detail.mbtiType }} - {{ detail.title[langService.currentLang()] }}</h3>
+            <p class="description">{{ detail.description[langService.currentLang()] }}</p>
+            <div class="result-meta">
+              <span>생존율: {{ detail.survivalRate }}%</span>
+              <span>환상의 궁합: {{ detail.bestPartner }}</span>
+              <span>환장의 궁합: {{ detail.worstPartner }}</span>
+            </div>
           </div>
-        </div>
+        }
       </div>
     }
   } @else {

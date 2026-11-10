@@ -1,0 +1,533 @@
+{
+ "id": "squid-game-s1",
+ "title": {
+  "ko": "오징어게임 MBTI 테스트",
+  "en": "Squid Game MBTI Test",
+  "de": "Squid Game MBTI-Test"
+ },
+ "startNodeId": "Q1_LightsOut",
+ "choiceWindowSec": 15,
+ "languages": [
+  "ko",
+  "en",
+  "de"
+ ],
+ "nodes": {
+  "Q1_LightsOut": {
+   "id": "Q1_LightsOut",
+   "type": "question",
+   "videoId": "3VNpwfhaDRg",
+   "stage": 1,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "무리에 합류한다",
+      "en": "Join the group",
+      "de": "Zur Gruppe"
+     },
+     "trait": "E",
+     "nextId": "Q2_E_Dalgona"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "캡슐 안에 숨는다",
+      "en": "Hide in your capsule",
+      "de": "In deiner Kapsel verstecken"
+     },
+     "trait": "I",
+     "nextId": "Q2_I_Dalgona"
+    }
+   ]
+  },
+  "Q2_E_Dalgona": {
+   "id": "Q2_E_Dalgona",
+   "type": "question",
+   "videoId": "sUYpRJ71lZ4",
+   "stage": 2,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "선을 따라 조금씩 판다",
+      "en": "Carve the line, bit by bit",
+      "de": "Stück für Stück an der Linie entlang"
+     },
+     "trait": "S",
+     "nextId": "Q3_ES_Marbles"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "바늘을 달궈 녹여 자른다",
+      "en": "Heat the needle and melt it",
+      "de": "Nadel erhitzen und durchschmelzen"
+     },
+     "trait": "N",
+     "nextId": "Q3_EN_Marbles"
+    }
+   ]
+  },
+  "Q2_I_Dalgona": {
+   "id": "Q2_I_Dalgona",
+   "type": "question",
+   "videoId": "rUFmuJPMkEU",
+   "stage": 2,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "바늘을 눕혀 모서리부터",
+      "en": "Tilt the needle, corner first",
+      "de": "Nadel schräg, erst die Ecken"
+     },
+     "trait": "S",
+     "nextId": "Q3_IS_Marbles"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "뒷면을 핥아 녹인다",
+      "en": "Lick the back till it melts",
+      "de": "Rückseite ablecken, bis es schmilzt"
+     },
+     "trait": "N",
+     "nextId": "Q3_IN_Marbles"
+    }
+   ]
+  },
+  "Q3_ES_Marbles": {
+   "id": "Q3_ES_Marbles",
+   "type": "question",
+   "videoId": "43nkP8p2ToE",
+   "stage": 3,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "내 구슬부터 지킨다",
+      "en": "Keep your own marbles safe",
+      "de": "Deine Murmeln behalten"
+     },
+     "trait": "T",
+     "nextId": "Q4_EST_Stones"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "반을 짝에게 준다",
+      "en": "Give half to your partner",
+      "de": "Die Hälfte abgeben"
+     },
+     "trait": "F",
+     "nextId": "Q4_ESF_Stones"
+    }
+   ]
+  },
+  "Q3_EN_Marbles": {
+   "id": "Q3_EN_Marbles",
+   "type": "question",
+   "videoId": "vikMzIfr0iY",
+   "stage": 3,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "다른 조를 속여 따낸다",
+      "en": "Outsmart another pair",
+      "de": "Ein anderes Paar austricksen"
+     },
+     "trait": "T",
+     "nextId": "Q4_ENT_Stones"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "끝까지 짝과 함께 간다",
+      "en": "Stick with your partner, no matter what",
+      "de": "Zusammenhalten, egal was"
+     },
+     "trait": "F",
+     "nextId": "Q4_ENF_Stones"
+    }
+   ]
+  },
+  "Q3_IS_Marbles": {
+   "id": "Q3_IS_Marbles",
+   "type": "question",
+   "videoId": "-eNCCMbnrBk",
+   "stage": 3,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "정해진 몫만 지킨다",
+      "en": "Stick to your fair share",
+      "de": "Bei deinem Anteil bleiben"
+     },
+     "trait": "T",
+     "nextId": "Q4_IST_Stones"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "몰래 구슬을 쥐여준다",
+      "en": "Slip marbles into his pocket",
+      "de": "Ihm heimlich Murmeln zustecken"
+     },
+     "trait": "F",
+     "nextId": "Q4_ISF_Stones"
+    }
+   ]
+  },
+  "Q3_IN_Marbles": {
+   "id": "Q3_IN_Marbles",
+   "type": "question",
+   "videoId": "OZDvelqpUOo",
+   "stage": 3,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "속셈을 읽고 거래를 제안한다",
+      "en": "Read her plan and make a deal",
+      "de": "Ihren Plan durchschauen, Deal anbieten"
+     },
+     "trait": "T",
+     "nextId": "Q4_INT_Stones"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "그녀의 사연을 묻는다",
+      "en": "Ask for her story",
+      "de": "Nach ihrer Geschichte fragen"
+     },
+     "trait": "F",
+     "nextId": "Q4_INF_Stones"
+    }
+   ]
+  },
+  "Q4_EST_Stones": {
+   "id": "Q4_EST_Stones",
+   "type": "question",
+   "videoId": "AS6-7JUSVj4",
+   "stage": 4,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "외운 순서대로 밟는다",
+      "en": "Follow the order you memorized",
+      "de": "Der gemerkten Reihenfolge folgen"
+     },
+     "trait": "J",
+     "nextId": "RES_ESTJ"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "앞사람을 보고 바로 판단한다",
+      "en": "Watch the player ahead and react",
+      "de": "Den Vordermann beobachten, reagieren"
+     },
+     "trait": "P",
+     "nextId": "RES_ESTP"
+    }
+   ]
+  },
+  "Q4_ESF_Stones": {
+   "id": "Q4_ESF_Stones",
+   "type": "question",
+   "videoId": "7I1lhX_xJUA",
+   "stage": 4,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "모두 줄 세워 순서를 정한다",
+      "en": "Line everyone up in order",
+      "de": "Alle in eine Reihe bringen"
+     },
+     "trait": "J",
+     "nextId": "RES_ESFJ"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "분위기 띄우며 먼저 뛴다",
+      "en": "Cheer everyone on and jump first",
+      "de": "Alle anfeuern und zuerst springen"
+     },
+     "trait": "P",
+     "nextId": "RES_ESFP"
+    }
+   ]
+  },
+  "Q4_ENT_Stones": {
+   "id": "Q4_ENT_Stones",
+   "type": "question",
+   "videoId": "gTbXR6RGW9U",
+   "stage": 4,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "경로를 짜고 모두를 지휘한다",
+      "en": "Plan the route and lead the crowd",
+      "de": "Die Route planen und alle anführen"
+     },
+     "trait": "J",
+     "nextId": "RES_ENTJ"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "색깔 가설을 바로 실험한다",
+      "en": "Test the color theory on the fly",
+      "de": "Die Farbtheorie direkt testen"
+     },
+     "trait": "P",
+     "nextId": "RES_ENTP"
+    }
+   ]
+  },
+  "Q4_ENF_Stones": {
+   "id": "Q4_ENF_Stones",
+   "type": "question",
+   "videoId": "aqmxF7hHNgQ",
+   "stage": 4,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "모두에게 길을 알려준다",
+      "en": "Teach everyone the path",
+      "de": "Allen den Weg zeigen"
+     },
+     "trait": "J",
+     "nextId": "RES_ENFJ"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "끌리는 돌을 믿는다",
+      "en": "Trust the stone that feels right",
+      "de": "Dem Stein vertrauen, der sich richtig anfühlt"
+     },
+     "trait": "P",
+     "nextId": "RES_ENFP"
+    }
+   ]
+  },
+  "Q4_IST_Stones": {
+   "id": "Q4_IST_Stones",
+   "type": "question",
+   "videoId": "VuhKV2RcljQ",
+   "stage": 4,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "기록한 그대로 정확히 밟는다",
+      "en": "Step exactly as recorded",
+      "de": "Exakt wie gemerkt treten"
+     },
+     "trait": "J",
+     "nextId": "RES_ISTJ"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "발끝으로 돌의 흔들림을 읽는다",
+      "en": "Feel each stone with your toes",
+      "de": "Jeden Stein mit den Zehen prüfen"
+     },
+     "trait": "P",
+     "nextId": "RES_ISTP"
+    }
+   ]
+  },
+  "Q4_ISF_Stones": {
+   "id": "Q4_ISF_Stones",
+   "type": "question",
+   "videoId": "JiMf_fBOtyE",
+   "stage": 4,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "남들이 지나간 길만 따라간다",
+      "en": "Follow where others stepped safely",
+      "de": "Den sicheren Spuren folgen"
+     },
+     "trait": "J",
+     "nextId": "RES_ISFJ"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "맨 마지막에 내 속도로 간다",
+      "en": "Wait till last, go at your pace",
+      "de": "Bis zum Schluss warten, eigenes Tempo"
+     },
+     "trait": "P",
+     "nextId": "RES_ISFP"
+    }
+   ]
+  },
+  "Q4_INT_Stones": {
+   "id": "Q4_INT_Stones",
+   "type": "question",
+   "videoId": "pkkh3MkHVy0",
+   "stage": 4,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "계산한 최적 경로로 간다",
+      "en": "Take your calculated route",
+      "de": "Deine berechnete Route nehmen"
+     },
+     "trait": "J",
+     "nextId": "RES_INTJ"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "가라앉는 규칙을 관찰하며 간다",
+      "en": "Study how the stones sink as you go",
+      "de": "Unterwegs beobachten, wie sie sinken"
+     },
+     "trait": "P",
+     "nextId": "RES_INTP"
+    }
+   ]
+  },
+  "Q4_INF_Stones": {
+   "id": "Q4_INF_Stones",
+   "type": "question",
+   "videoId": "GpSOKXMat18",
+   "stage": 4,
+   "options": [
+    {
+     "key": "A",
+     "label": {
+      "ko": "봤던 길을 차분히 떠올린다",
+      "en": "Calmly recall the path you saw",
+      "de": "Den gesehenen Weg ruhig abrufen"
+     },
+     "trait": "J",
+     "nextId": "RES_INFJ"
+    },
+    {
+     "key": "B",
+     "label": {
+      "ko": "남은 빛을 따라간다",
+      "en": "Follow the last bit of light",
+      "de": "Dem letzten Licht folgen"
+     },
+     "trait": "P",
+     "nextId": "RES_INFP"
+    }
+   ]
+  },
+  "RES_ENFJ": {
+   "id": "RES_ENFJ",
+   "type": "result",
+   "videoId": "KiSZmCLtyj4",
+   "mbtiType": "ENFJ"
+  },
+  "RES_ENFP": {
+   "id": "RES_ENFP",
+   "type": "result",
+   "videoId": "q8jw1UVGGgY",
+   "mbtiType": "ENFP"
+  },
+  "RES_ENTJ": {
+   "id": "RES_ENTJ",
+   "type": "result",
+   "videoId": "zBD3RqCL5Kg",
+   "mbtiType": "ENTJ"
+  },
+  "RES_ENTP": {
+   "id": "RES_ENTP",
+   "type": "result",
+   "videoId": "4xfEyv8R3Bk",
+   "mbtiType": "ENTP"
+  },
+  "RES_ESFJ": {
+   "id": "RES_ESFJ",
+   "type": "result",
+   "videoId": "C7A8bTHXvC0",
+   "mbtiType": "ESFJ"
+  },
+  "RES_ESFP": {
+   "id": "RES_ESFP",
+   "type": "result",
+   "videoId": "1euKgCBCELI",
+   "mbtiType": "ESFP"
+  },
+  "RES_ESTJ": {
+   "id": "RES_ESTJ",
+   "type": "result",
+   "videoId": "kmUmIo_VubA",
+   "mbtiType": "ESTJ"
+  },
+  "RES_ESTP": {
+   "id": "RES_ESTP",
+   "type": "result",
+   "videoId": "bNTIfk_rjKc",
+   "mbtiType": "ESTP"
+  },
+  "RES_INFJ": {
+   "id": "RES_INFJ",
+   "type": "result",
+   "videoId": "uFvaQu-GXgU",
+   "mbtiType": "INFJ"
+  },
+  "RES_INFP": {
+   "id": "RES_INFP",
+   "type": "result",
+   "videoId": "y1blg-5G2WI",
+   "mbtiType": "INFP"
+  },
+  "RES_INTJ": {
+   "id": "RES_INTJ",
+   "type": "result",
+   "videoId": "Igx0AQHsaGo",
+   "mbtiType": "INTJ"
+  },
+  "RES_INTP": {
+   "id": "RES_INTP",
+   "type": "result",
+   "videoId": "oi992bwlKhU",
+   "mbtiType": "INTP"
+  },
+  "RES_ISFJ": {
+   "id": "RES_ISFJ",
+   "type": "result",
+   "videoId": "6har5hyjztA",
+   "mbtiType": "ISFJ"
+  },
+  "RES_ISFP": {
+   "id": "RES_ISFP",
+   "type": "result",
+   "videoId": "2xnyz7E2nks",
+   "mbtiType": "ISFP"
+  },
+  "RES_ISTJ": {
+   "id": "RES_ISTJ",
+   "type": "result",
+   "videoId": "5A0jnzMc4z8",
+   "mbtiType": "ISTJ"
+  },
+  "RES_ISTP": {
+   "id": "RES_ISTP",
+   "type": "result",
+   "videoId": "iLgz4f3uU-A",
+   "mbtiType": "ISTP"
+  }
+ }
+}

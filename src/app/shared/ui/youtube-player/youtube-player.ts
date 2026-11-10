@@ -19,7 +19,7 @@ declare const YT: any;
 })
 export class YoutubePlayer implements OnInit, OnDestroy {
   readonly videoId = input.required<string>();
-  readonly choiceAtSec = input<number | undefined>(undefined);
+  readonly choiceWindowSec = input<number>(15); // 기본 선택 대기시간 15초
   readonly videoEnded = output<void>();
   readonly choiceTriggered = output<void>();
 
@@ -55,7 +55,6 @@ export class YoutubePlayer implements OnInit, OnDestroy {
     if (typeof YT !== 'undefined' && YT.ready) {
       YT.ready(() => this.initPlayer());
     } else {
-      // 0.2초 뒤 재시도
       setTimeout(() => this.ensureYTReadyAndInit(), 200);
     }
   }
@@ -75,11 +74,7 @@ export class YoutubePlayer implements OnInit, OnDestroy {
         modestbranding: 1
       },
       events: {
-        onReady: () => {
-          console.log('✅ YouTube Player 준비 완료');
-        },
         onStateChange: (event: any) => {
-          console.log('▶️ 플레이어 상태 변경:', event.data);
           // 재생 중 (PLAYING: 1)
           if (event.data === 1) {
             this.startTimeTracker();
@@ -89,7 +84,6 @@ export class YoutubePlayer implements OnInit, OnDestroy {
 
           // 종료 (ENDED: 0)
           if (event.data === 0) {
-            console.log('🏁 영상 종료 감지');
             this.videoEnded.emit();
           }
         }
@@ -99,14 +93,17 @@ export class YoutubePlayer implements OnInit, OnDestroy {
 
   private startTimeTracker(): void {
     this.stopTimeTracker();
+
     this.timeCheckInterval = setInterval(() => {
-      if (!this.player?.getCurrentTime) return;
+      if (!this.player?.getCurrentTime || !this.player?.getDuration) return;
 
       const currentSec = this.player.getCurrentTime();
-      const targetSec = this.choiceAtSec();
+      const totalSec = this.player.getDuration();
 
-      if (targetSec !== undefined && currentSec >= targetSec && !this.hasTriggeredChoice) {
-        console.log(`🎯 선택 시점 도달 (${currentSec.toFixed(1)}초 >= ${targetSec}초)`);
+      // 영상 전체 길이 - 선택 제한시간(예: 38 - 15 = 23초) 계산
+      const triggerSec = Math.max(0, totalSec - this.choiceWindowSec());
+
+      if (totalSec > 0 && currentSec >= triggerSec && !this.hasTriggeredChoice) {
         this.hasTriggeredChoice = true;
         this.choiceTriggered.emit();
       }

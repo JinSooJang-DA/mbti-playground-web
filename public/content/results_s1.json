@@ -1,0 +1,306 @@
+{
+ "ENFJ": {
+  "mbtiType": "ENFJ",
+  "resultNodeId": "RES_ENFJ",
+  "videoId": "KiSZmCLtyj4",
+  "title": {
+   "ko": "빛을 든 인도자",
+   "en": "The Torchbearer",
+   "de": "Der Lichtträger"
+  },
+  "description": {
+   "ko": "아무도 두고 가지 않아요. 내가 위험해도요.",
+   "en": "You leave no one behind. Even if it costs you.",
+   "de": "Du lässt niemanden zurück. Auch wenn's dich was kostet."
+  },
+  "survivalRate": 74,
+  "bestPartner": "INFP",
+  "worstPartner": "ISTP",
+  "shortsVideoId": null
+ },
+ "ENFP": {
+  "mbtiType": "ENFP",
+  "resultNodeId": "RES_ENFP",
+  "videoId": "q8jw1UVGGgY",
+  "title": {
+   "ko": "운을 부르는 불사조",
+   "en": "The Lucky Phoenix",
+   "de": "Der Glücks-Phönix"
+  },
+  "description": {
+   "ko": "계획은 없어요. 운과 친구 복으로 어떻게든 살아남죠.",
+   "en": "No plan. Pure luck and friends. Somehow, it works.",
+   "de": "Kein Plan. Nur Glück und Freunde. Klappt trotzdem."
+  },
+  "survivalRate": 77,
+  "bestPartner": "INTJ",
+  "worstPartner": "ISTJ",
+  "shortsVideoId": null
+ },
+ "ENTJ": {
+  "mbtiType": "ENTJ",
+  "resultNodeId": "RES_ENTJ",
+  "videoId": "zBD3RqCL5Kg",
+  "title": {
+   "ko": "판을 짜는 장수",
+   "en": "The Commander",
+   "de": "Der Feldherr"
+  },
+  "description": {
+   "ko": "지도를 쥐고 모두를 승리로 이끌어요.",
+   "en": "You grab the map and march everyone to victory.",
+   "de": "Du schnappst dir die Karte und führst alle zum Sieg."
+  },
+  "survivalRate": 97,
+  "bestPartner": "INTP",
+  "worstPartner": "ISFP",
+  "shortsVideoId": null
+ },
+ "ENTP": {
+  "mbtiType": "ENTP",
+  "resultNodeId": "RES_ENTP",
+  "videoId": "4xfEyv8R3Bk",
+  "title": {
+   "ko": "규칙 해커",
+   "en": "The Rule Hacker",
+   "de": "Der Regel-Hacker"
+  },
+  "description": {
+   "ko": "규칙의 빈틈을 찾아내 진행요원마저 당황시켜요.",
+   "en": "You find the loophole. Even the guards are confused.",
+   "de": "Du findest die Lücke. Sogar die Wachen sind verwirrt."
+  },
+  "survivalRate": 85,
+  "bestPartner": "INFJ",
+  "worstPartner": "ISFJ",
+  "shortsVideoId": null
+ },
+ "ESFJ": {
+  "mbtiType": "ESFJ",
+  "resultNodeId": "RES_ESFJ",
+  "videoId": "C7A8bTHXvC0",
+  "title": {
+   "ko": "숙소의 큰언니·큰형",
+   "en": "The Dorm's Big Sibling",
+   "de": "Die gute Seele des Schlafsaals"
+  },
+  "description": {
+   "ko": "모두를 챙기고 동맹을 만드는 사람이에요.",
+   "en": "You feed everyone and build the alliance.",
+   "de": "Du kümmerst dich um alle und schmiedest Bündnisse."
+  },
+  "survivalRate": 70,
+  "bestPartner": "ISFP",
+  "worstPartner": "INTP",
+  "shortsVideoId": null
+ },
+ "ESFP": {
+  "mbtiType": "ESFP",
+  "resultNodeId": "RES_ESFP",
+  "videoId": "1euKgCBCELI",
+  "title": {
+   "ko": "놀이방의 광대",
+   "en": "The Playroom Clown",
+   "de": "Der Spielzimmer-Clown"
+  },
+  "description": {
+   "ko": "이런 곳에서도 사람들을 웃게 만들어요.",
+   "en": "Even here, you make people laugh.",
+   "de": "Selbst hier bringst du alle zum Lachen."
+  },
+  "survivalRate": 58,
+  "bestPartner": "ISTJ",
+  "worstPartner": "INTJ",
+  "shortsVideoId": null
+ },
+ "ESTJ": {
+  "mbtiType": "ESTJ",
+  "resultNodeId": "RES_ESTJ",
+  "videoId": "kmUmIo_VubA",
+  "title": {
+   "ko": "놀이방의 감독관",
+   "en": "The Playroom Overseer",
+   "de": "Der Spielzimmer-Aufseher"
+  },
+  "description": {
+   "ko": "누구보다 빨리 규칙을 익히고 판 전체를 관리해요.",
+   "en": "You learn the rules fastest and run the whole game.",
+   "de": "Du lernst die Regeln am schnellsten und leitest das ganze Spiel."
+  },
+  "survivalRate": 94,
+  "bestPartner": "ISFP",
+  "worstPartner": "INFP",
+  "shortsVideoId": null
+ },
+ "ESTP": {
+  "mbtiType": "ESTP",
+  "resultNodeId": "RES_ESTP",
+  "videoId": "bNTIfk_rjKc",
+  "title": {
+   "ko": "맨발의 돌파자",
+   "en": "The Barefoot Breaker",
+   "de": "Der Barfuß-Durchbrecher"
+  },
+  "description": {
+   "ko": "생각보다 몸이 먼저. 위기일수록 빛나요.",
+   "en": "Body first, brain later. You shine in chaos.",
+   "de": "Erst handeln, dann denken. Im Chaos glänzt du."
+  },
+  "survivalRate": 82,
+  "bestPartner": "ISFJ",
+  "worstPartner": "INFJ",
+  "shortsVideoId": null
+ },
+ "INFJ": {
+  "mbtiType": "INFJ",
+  "resultNodeId": "RES_INFJ",
+  "videoId": "uFvaQu-GXgU",
+  "title": {
+   "ko": "달을 읽는 예언자",
+   "en": "The Moon Reader",
+   "de": "Der Mondleser"
+  },
+  "description": {
+   "ko": "모두의 속마음과 결말까지 꿰뚫어 봤어요.",
+   "en": "You saw everyone's true heart. And the ending.",
+   "de": "Du hast jedes Herz durchschaut. Und das Ende."
+  },
+  "survivalRate": 66,
+  "bestPartner": "ENTP",
+  "worstPartner": "ESTP",
+  "shortsVideoId": null
+ },
+ "INFP": {
+  "mbtiType": "INFP",
+  "resultNodeId": "RES_INFP",
+  "videoId": "y1blg-5G2WI",
+  "title": {
+   "ko": "등불 아래 시인",
+   "en": "The Lantern Poet",
+   "de": "Der Laternen-Poet"
+  },
+  "description": {
+   "ko": "흔들려도 결정적 순간엔 가장 용감해요. 당신이 주인공이에요.",
+   "en": "Shaken, but brave when it counts. You're the main character.",
+   "de": "Wackelig, aber mutig, wenn's zählt. Du bist die Hauptfigur."
+  },
+  "survivalRate": 52,
+  "bestPartner": "ENFJ",
+  "worstPartner": "ESTJ",
+  "shortsVideoId": null
+ },
+ "INTJ": {
+  "mbtiType": "INTJ",
+  "resultNodeId": "RES_INTJ",
+  "videoId": "Igx0AQHsaGo",
+  "title": {
+   "ko": "장기판 위의 그림자",
+   "en": "The Chess Master",
+   "de": "Der Schachmeister"
+  },
+  "description": {
+   "ko": "게임이 시작되기도 전에 전부 계산해 뒀죠.",
+   "en": "You calculated everything. Before the game even started.",
+   "de": "Du hast alles berechnet. Bevor das Spiel begann."
+  },
+  "survivalRate": 96,
+  "bestPartner": "ENFP",
+  "worstPartner": "ESFP",
+  "shortsVideoId": null
+ },
+ "INTP": {
+  "mbtiType": "INTP",
+  "resultNodeId": "RES_INTP",
+  "videoId": "oi992bwlKhU",
+  "title": {
+   "ko": "규칙을 해부하는 학자",
+   "en": "The Mad Scientist",
+   "de": "Der verrückte Forscher"
+  },
+  "description": {
+   "ko": "돌은 왜 가라앉지? 시간 끝나기 직전까지 분석했죠.",
+   "en": "Why do stones sink? You had to know. Right before time ran out.",
+   "de": "Warum sinken Steine? Du musstest es wissen. Kurz vor Schluss."
+  },
+  "survivalRate": 79,
+  "bestPartner": "ENTJ",
+  "worstPartner": "ESFJ",
+  "shortsVideoId": null
+ },
+ "ISFJ": {
+  "mbtiType": "ISFJ",
+  "resultNodeId": "RES_ISFJ",
+  "videoId": "6har5hyjztA",
+  "title": {
+   "ko": "끝까지 지키는 방패",
+   "en": "The Loyal Shield",
+   "de": "Das treue Schild"
+  },
+  "description": {
+   "ko": "묵묵히 곁을 지켜요. 그 착함이 당신의 힘이에요.",
+   "en": "You stay by their side. Your kindness is your power.",
+   "de": "Du bleibst an ihrer Seite. Deine Güte ist deine Stärke."
+  },
+  "survivalRate": 62,
+  "bestPartner": "ESTP",
+  "worstPartner": "ENTP",
+  "shortsVideoId": null
+ },
+ "ISFP": {
+  "mbtiType": "ISFP",
+  "resultNodeId": "RES_ISFP",
+  "videoId": "2xnyz7E2nks",
+  "title": {
+   "ko": "그림자 속 예술가",
+   "en": "The Quiet Artist",
+   "de": "Der stille Künstler"
+  },
+  "description": {
+   "ko": "싸움을 피해서 내 속도로 끝까지 버텨요.",
+   "en": "You skip the fights and survive at your own pace.",
+   "de": "Du meidest Streit und überlebst in deinem Tempo."
+  },
+  "survivalRate": 60,
+  "bestPartner": "ESTJ",
+  "worstPartner": "ENTJ",
+  "shortsVideoId": null
+ },
+ "ISTJ": {
+  "mbtiType": "ISTJ",
+  "resultNodeId": "RES_ISTJ",
+  "videoId": "5A0jnzMc4z8",
+  "title": {
+   "ko": "원칙의 수문장",
+   "en": "The Rule Keeper",
+   "de": "Der Regelhüter"
+  },
+  "description": {
+   "ko": "한 걸음씩, 원칙대로. 변수는 제로.",
+   "en": "Step by step, rule by rule. Zero surprises.",
+   "de": "Schritt für Schritt, Regel für Regel. Null Überraschungen."
+  },
+  "survivalRate": 89,
+  "bestPartner": "ESFP",
+  "worstPartner": "ENFP",
+  "shortsVideoId": null
+ },
+ "ISTP": {
+  "mbtiType": "ISTP",
+  "resultNodeId": "RES_ISTP",
+  "videoId": "iLgz4f3uU-A",
+  "title": {
+   "ko": "조용한 장인",
+   "en": "The Silent Craftsman",
+   "de": "Der stille Handwerker"
+  },
+  "description": {
+   "ko": "말은 적어도 손은 완벽해요. 위기에 가장 침착하죠.",
+   "en": "Few words, perfect hands. Calmest in a crisis.",
+   "de": "Wenig Worte, perfekte Hände. Ruhig in jeder Krise."
+  },
+  "survivalRate": 91,
+  "bestPartner": "ESFJ",
+  "worstPartner": "ENFJ",
+  "shortsVideoId": null
+ }
+}

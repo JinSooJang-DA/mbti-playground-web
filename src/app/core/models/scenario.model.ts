@@ -1,49 +1,60 @@
-// 1. 다국어 지원 텍스트 타입 (한국어, 영어, 독일어)
+// 1. 다국어 지원 텍스트 (한국어, 영어, 독일어)
 export interface LocalizedText {
   ko: string;
   en: string;
   de: string;
 }
 
-// 2. MBTI 성향 단일 문자 (오타 방지용 유니온 타입)
-export type MbtiTrait = 'E' | 'I' | 'S' | 'N' | 'T' | 'F' | 'J' | 'P';
-
-// 3. 질문 영상의 A/B 선택지 규격
+// 2. A / B 선택지 버튼 정보
 export interface ScenarioOption {
-  label: LocalizedText;    // 버튼에 표시할 3개 언어 문구
-  trait: MbtiTrait;        // 선택 시 얻는 성향 지표
-  nextId: string;          // 이동할 다음 노드의 id
+  key: 'A' | 'B';          // 버튼 종류 (A 또는 B)
+  label: LocalizedText;    // 버튼에 표시될 문구
+  trait: string;           // E, I, S, N, T, F, J, P 중 하나
+  nextId: string;          // 클릭 시 이동할 다음 노드 ID
 }
 
-// 4. 질문 영상 노드 규격
+// 3. 질문 노드 (1~4단계 영상과 2개의 선택지)
 export interface QuestionNode {
-  type: 'question';        // 노드 종류 구분용
-  id: string;              // 예: 'Q1_LightsOut', 'Q2_E_Dalgona'
-  videoId: string;         // 유튜브 영상 고유 ID
-  choiceAtSec?: number;    // A/B 선택 버튼을 띄울 시점 (초 단위, 선택 사항)
-  options: ScenarioOption[]; // A/B 2개 선택지 배열
+  id: string;
+  type: 'question';
+  videoId: string;
+  stage: number;           // 1단계, 2단계, 3단계, 4단계 표시용
+  options: ScenarioOption[];
 }
 
-// 5. 결과 영상 노드 규격 (16개 유형)
+// 4. 트리의 끝에 위치한 기본 결과 노드
 export interface ResultNode {
-  type: 'result';          // 노드 종류 구분용
-  id: string;              // 예: 'R_ENFP'
-  videoId: string;         // 유튜브 결과 풀영상 ID
-  mbtiType: string;        // 예: 'ENFP'
-  title: LocalizedText;    // 유형별 칭호
-  description: LocalizedText; // 유형별 성향/생존 분석 설명
-  survivalRate: number;    // 생존율 (예: 12.5)
-  compatibleType: string;  // 환상의 궁합 MBTI 유형 (예: 'INFJ')
-  shortsVideoId: string;   // 해당 유형 전용 유튜브 쇼츠 영상 ID
+  id: string;
+  type: 'result';
+  videoId: string;
+  mbtiType: string;        // 예: 'ENFJ', 'ISTJ'
 }
 
-// 6. 전체 노드 유니온 타입
+// 5. 노드는 '질문 노드'이거나 '결과 노드' 둘 중 하나
 export type ScenarioNode = QuestionNode | ResultNode;
 
-// 7. 테스트 1개 단위 최상위 데이터 구조 (시리즈 1탄, 2탄 등)
+// 6. test_s1.json 전체를 담는 시나리오 트리 인터페이스
 export interface ScenarioTest {
-  id: string;              // 예: 'squid-game-s1'
-  title: LocalizedText;    // 테스트 제목
-  startNodeId: string;     // 첫 번째 질문 노드 ID (예: 'Q1_LightsOut')
-  nodes: Record<string, ScenarioNode>; // id를 키(Key)로 하는 노드 맵
+  id: string;
+  title: LocalizedText;
+  startNodeId: string;
+  choiceWindowSec: number; // 선택 제한시간 (15초)
+  languages: string[];     // ['ko', 'en', 'de']
+  nodes: Record<string, ScenarioNode>; // 노드 모음집
 }
+
+// 7. results_s1.json에 들어있는 16개 MBTI 상세 결과 카드 정보
+export interface ResultDetail {
+  mbtiType: string;
+  resultNodeId: string;    // 예: 'RES_ENFJ'
+  videoId: string;
+  title: LocalizedText;    // 칭호 (예: '빛을 든 인도자')
+  description: LocalizedText; // 설명 문구
+  survivalRate: number;    // 생존율 (숫자)
+  bestPartner: string;     // 환상의 궁합 MBTI
+  worstPartner: string;    // 환장의 궁합 MBTI
+  shortsVideoId: string | null; // 유튜브 쇼츠 ID (없으면 null)
+}
+
+// 8. 16개 결과를 MBTI 문자열을 키로 보관하는 맵
+export type ResultDetailMap = Record<string, ResultDetail>;
