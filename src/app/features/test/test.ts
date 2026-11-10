@@ -21,6 +21,11 @@ export class Test implements OnInit {
 
   // 고정 UI 라벨 다국어 사전
   readonly uiText = {
+    loading: {
+      ko: '시나리오 데이터를 불러오는 중입니다...',
+      en: 'Loading scenario data...',
+      de: 'Szenariodaten werden geladen...'
+    },
     survivalRate: { ko: '생존율', en: 'Survival Rate', de: 'Überlebensrate' },
     bestPartner: { ko: '환상의 궁합', en: 'Best Match', de: 'Bester Partner' },
     worstPartner: { ko: '환장의 궁합', en: 'Worst Match', de: 'Schlechtester Partner' },
